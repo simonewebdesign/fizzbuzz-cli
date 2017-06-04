@@ -1,0 +1,44 @@
+#!/bin/bash
+
+endpoint="http://localhost:4000/?json&page=$1&limit=$2"
+help='
+Usage: fizzbuzz [PAGE] [LIMIT]
+Makes an HTTP request to fetch a page from the fizzbuzz sequence.
+
+Options:
+    [PAGE]              The page number to fetch           (default: 1)
+    [LIMIT]             The number of results to fetch     (default: 100)
+    -h --help           Show this help text
+    -v --version        Print version
+
+Examples:
+    fizzbuzz 5          Get page 5, 100 results            (from 401 to 500)
+    fizzbuzz 3 50       Get page 3, 50 results             (from 151 to 200)
+
+Status codes:
+    0 - successful
+    1 - illegal option
+    2 - failed to fetch
+'
+
+for arg in "$@"; do
+  case $arg in
+    -h|--help)
+      echo "$help"
+      exit;;
+
+    -v|--version)
+      echo 1.0.0
+      exit;;
+
+    -*)
+      >&2 echo "fizzbuzz: illegal option $arg"
+      echo "$help"
+      exit 1;;
+
+    *)
+      curl "$endpoint" || echo "fizzbuzz: Failed to fetch - is the endpoint running on http://localhost:4000/?"
+      exit 2
+  esac
+done
+
