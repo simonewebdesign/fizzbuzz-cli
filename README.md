@@ -7,12 +7,12 @@ Linux and Mac are supported.
 
 ## Synopsis
 
-    Usage: fizzbuzz [PAGE] [LIMIT]
+    Usage: fizzbuzz [PAGE] [PAGE_SIZE]
     Makes an HTTP request to fetch a page from the fizzbuzz sequence.
 
     Options:
         [PAGE]              The page number to fetch           (default: 1)
-        [LIMIT]             The number of results to fetch     (default: 100)
+        [PAGE_SIZE]         The number of results to fetch     (default: 100)
         -h --help           Show this help text
         -v --version        Print version
 

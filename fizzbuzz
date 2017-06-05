@@ -1,13 +1,13 @@
 #!/bin/bash
 
-endpoint="http://localhost:4000/?json&page=$1&limit=$2"
+endpoint="http://localhost:4000/?json&page=$1&page_size=$2"
 help='
-Usage: fizzbuzz [PAGE] [LIMIT]
+Usage: fizzbuzz [PAGE] [PAGE_SIZE]
 Makes an HTTP request to fetch a page from the fizzbuzz sequence.
 
 Options:
     [PAGE]              The page number to fetch           (default: 1)
-    [LIMIT]             The number of results to fetch     (default: 100)
+    [PAGE_SIZE]         The number of results to fetch     (default: 100)
     -h --help           Show this help text
     -v --version        Print version
 
@@ -28,7 +28,7 @@ for arg in "$@"; do
       exit;;
 
     -v|--version)
-      echo 1.0.0
+      echo 1.1.0
       exit;;
 
     -*)
@@ -37,7 +37,7 @@ for arg in "$@"; do
       exit 1;;
 
     *)
-      curl "$endpoint" || echo "fizzbuzz: Failed to fetch - is the endpoint running on http://localhost:4000/?"
+      curl "$endpoint" || echo "fizzbuzz: Failed to fetch - is the API running on http://localhost:4000/?"
       exit 2
   esac
 done
