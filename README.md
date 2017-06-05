@@ -19,8 +19,3 @@ Linux and Mac are supported.
     Examples:
         fizzbuzz 5          Get page 5, 100 results            (from 401 to 500)
         fizzbuzz 3 50       Get page 3, 50 results             (from 151 to 200)
-
-    Status codes:
-        0 - successful
-        1 - illegal option
-        2 - failed to fetch
